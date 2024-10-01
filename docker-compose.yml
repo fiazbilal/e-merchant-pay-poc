@@ -1,0 +1,10 @@
+version: '3'
+services:
+  be:
+    build: ./be
+    ports:
+      - "8080:8080"
+  fe:
+    build: ./fe
+    ports:
+      - "3000:3000"
