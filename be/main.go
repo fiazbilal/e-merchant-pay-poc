@@ -14,6 +14,7 @@ func main() {
 	// Register endpoints with logging middleware
 	http.HandleFunc("/health", logRequest(healthCheckHandler))
 	http.HandleFunc("/create-payment", logRequest(createPaymentHandler))
+	http.HandleFunc("/webhook-notification", logRequest(webhookNotificationHandler)) // New webhook notification endpoint
 
 	fmt.Println("Starting server on :8080")
 	http.ListenAndServe(":8080", nil)
