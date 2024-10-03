@@ -3,18 +3,21 @@ import axios from 'axios';
 
 const PaymentForm = () => {
   const [paymentData, setPaymentData] = useState({
-    transaction_id: '',
-    usage: '',
-    description: '',
+    transaction_id: '', // Transaction ID can still be dynamic
     amount: '',
-    currency: '',
-    consumer_id: '',
-    customer_email: '',
-    customer_phone: '',
+    currency: 'USD', // Default currency to USD
+    notification_url: 'https://yourdomain.com/notification', 
+    return_success_url: 'http://localhost:3000/payment-success', 
+    return_failure_url: 'https://localhost:3000/payment-failure', 
+    transaction_types: [{ name: 'sale' }],
   });
 
   const handleInputChange = (e) => {
     setPaymentData({ ...paymentData, [e.target.name]: e.target.value });
+  };
+
+  const handleCurrencyChange = (e) => {
+    setPaymentData({ ...paymentData, currency: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -39,22 +42,6 @@ const PaymentForm = () => {
         required
       />
       <input
-        type="text"
-        name="usage"
-        value={paymentData.usage}
-        onChange={handleInputChange}
-        placeholder="Usage"
-        required
-      />
-      <input
-        type="text"
-        name="description"
-        value={paymentData.description}
-        onChange={handleInputChange}
-        placeholder="Description"
-        required
-      />
-      <input
         type="number"
         name="amount"
         value={paymentData.amount}
@@ -62,38 +49,10 @@ const PaymentForm = () => {
         placeholder="Amount"
         required
       />
-      <input
-        type="text"
-        name="currency"
-        value={paymentData.currency}
-        onChange={handleInputChange}
-        placeholder="Currency"
-        required
-      />
-      <input
-        type="text"
-        name="consumer_id"
-        value={paymentData.consumer_id}
-        onChange={handleInputChange}
-        placeholder="Consumer ID"
-        required
-      />
-      <input
-        type="email"
-        name="customer_email"
-        value={paymentData.customer_email}
-        onChange={handleInputChange}
-        placeholder="Customer Email"
-        required
-      />
-      <input
-        type="tel"
-        name="customer_phone"
-        value={paymentData.customer_phone}
-        onChange={handleInputChange}
-        placeholder="Customer Phone"
-        required
-      />
+      <select name="currency" value={paymentData.currency} onChange={handleCurrencyChange} required>
+        <option value="USD">USD</option>
+        <option value="EURO">EURO</option>
+      </select>
       <button type="submit">Pay Now</button>
     </form>
   );
