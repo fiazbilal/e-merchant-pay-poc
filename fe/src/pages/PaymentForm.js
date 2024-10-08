@@ -3,12 +3,12 @@ import axios from 'axios';
 
 const PaymentForm = () => {
   const [paymentData, setPaymentData] = useState({
-    transaction_id: '', // Transaction ID can still be dynamic
-    amount: '',
-    currency: 'USD', // Default currency to USD
-    notification_url: 'https://yourdomain.com/notification', 
+    transaction_id: '123', // Transaction ID can still be dynamic
+    amount: 120.12,
+    currency: 'EUR', // Default currency to USD
+    notification_url: 'http://localhost:8080/webhook-notification', 
     return_success_url: 'http://localhost:3000/payment-success', 
-    return_failure_url: 'https://localhost:3000/payment-failure', 
+    return_failure_url: 'http://localhost:3000/payment-failure', 
     transaction_types: [{ name: 'sale' }],
   });
 
@@ -24,6 +24,7 @@ const PaymentForm = () => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:8080/create-payment', paymentData);
+      console.log("Resp: ",response)
       const { redirect_url } = response.data;
       window.location.href = redirect_url;
     } catch (error) {
@@ -51,7 +52,7 @@ const PaymentForm = () => {
       />
       <select name="currency" value={paymentData.currency} onChange={handleCurrencyChange} required>
         <option value="USD">USD</option>
-        <option value="EURO">EURO</option>
+        <option value="EUR">EUR</option>
       </select>
       <button type="submit">Pay Now</button>
     </form>
