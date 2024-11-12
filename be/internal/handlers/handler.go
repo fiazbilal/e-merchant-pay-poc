@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/fiazbilal/e-merchant-pay-poc/config"
 	"github.com/gofiber/fiber/v2"
-	"github.com/prime-trader/payment-processor/config"
 )
 
 func HealthCheck(c *fiber.Ctx) error {

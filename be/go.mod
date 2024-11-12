@@ -1,4 +1,4 @@
-module github.com/prime-trader/payment-processor
+module github.com/fiazbilal/e-merchant-pay-poc
 
 go 1.22.4
 

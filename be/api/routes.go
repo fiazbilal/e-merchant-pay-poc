@@ -1,8 +1,8 @@
 package api
 
 import (
+	handler "github.com/fiazbilal/e-merchant-pay-poc/internal/handlers"
 	"github.com/gofiber/fiber/v2"
-	handler "github.com/prime-trader/payment-processor/internal/handlers"
 )
 
 func SetupRoutes(app *fiber.App) {

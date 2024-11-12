@@ -7,8 +7,8 @@ import (
 	"log"
 	"strings"
 
+	"github.com/fiazbilal/e-merchant-pay-poc/config"
 	"github.com/gofiber/fiber/v2"
-	"github.com/prime-trader/payment-processor/config"
 )
 
 type Notification struct {

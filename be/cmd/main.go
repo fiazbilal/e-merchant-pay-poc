@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 
+	"github.com/fiazbilal/e-merchant-pay-poc/api"
+	"github.com/fiazbilal/e-merchant-pay-poc/config"
 	"github.com/gofiber/fiber/v2"
-	"github.com/prime-trader/payment-processor/api"
-	"github.com/prime-trader/payment-processor/config"
 )
 
 func main() {
