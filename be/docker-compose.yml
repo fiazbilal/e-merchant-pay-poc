@@ -1,0 +1,9 @@
+services:
+  payment-processor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4100:4100"
+    env_file:
+      - ./cmd/.env
